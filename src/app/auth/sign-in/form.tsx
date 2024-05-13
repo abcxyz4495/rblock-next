@@ -78,6 +78,7 @@ export default function Form({ callbackUrl }: Props) {
 				<FaUser color="white" size={25} />
 				<input
 					type="text"
+					id="userid"
 					className="text-white bg-transparent w-3/4 outline-none"
 					{...register("userid")}
 					placeholder="userid"
@@ -89,6 +90,7 @@ export default function Form({ callbackUrl }: Props) {
 				<IoMdLock color="white" size={25} />
 				<input
 					type="password"
+					id="password"
 					className="text-white bg-transparent w-3/4 outline-none"
 					{...register("password", {
 						minLength: 8,
