@@ -45,7 +45,7 @@ export default function Form({ callbackUrl }: Props) {
 				...credentials?.data,
 				redirect: false,
 			});
-			toast({ variant: "success", description: response });
+			toast({ variant: "success", description: "response" });
 
 			if (response && response?.ok) {
 				router.push(callbackUrl ? callbackUrl : "/");
