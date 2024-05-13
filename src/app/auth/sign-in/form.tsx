@@ -45,15 +45,15 @@ export default function Form({ callbackUrl }: Props) {
 				redirect: false,
 			});
 
-			if (response?.ok) {
+			if (response && response?.ok) {
 				router.push(callbackUrl ? callbackUrl : "/");
 				router.refresh();
 				toast({ variant: "success", description: "Logged In" });
-			} else if (!response?.ok) {
+			} else if (response && !response?.ok) {
 				console.error(response)
 				toast({
 					variant: "destructive",
-					description: response.error,
+					description: response?.error,
 				});
 			}
 		} catch (error: unknown) {
