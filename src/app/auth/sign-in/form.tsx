@@ -11,6 +11,7 @@ import { CgSpinner } from "react-icons/cg";
 
 import { getErrorMessage } from "@/helper/errorHelper";
 import { LoginSchema } from "@/schema";
+import { useToast } from "@/components/ui/use-toast";
 
 interface Props {
 	callbackUrl?: string;
@@ -19,6 +20,7 @@ interface Props {
 type LoginSchemaType = z.infer<typeof LoginSchema>;
 
 export default function Form({ callbackUrl }: Props) {
+	const { toast } = useToast();
 	const router = useRouter();
 	const [isDisabled, setIsDisabled] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -46,9 +48,19 @@ export default function Form({ callbackUrl }: Props) {
 			if (response?.ok) {
 				router.push(callbackUrl ? callbackUrl : "/");
 				router.refresh();
+				toast({ variant: "success", description: "Logged In" });
+			} else if (!response?.ok) {
+				console.error(response)
+				toast({
+					variant: "destructive",
+					description: response.error,
+				});
 			}
 		} catch (error: unknown) {
-			console.error(getErrorMessage(error));
+			toast({
+				variant: "destructive",
+				description: getErrorMessage(error),
+			});
 		} finally {
 			setIsDisabled(false);
 			setLoading(false);
