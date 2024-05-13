@@ -20,6 +20,7 @@ export const authOptions: NextAuthOptions = {
 				await dbConnect();
 
 				try {
+					console.log("Getting");
 					const user = await UserModel.findOne({
 						userid: credentials.userid,
 					}).select("+password");
@@ -29,7 +30,7 @@ export const authOptions: NextAuthOptions = {
 					}
 
 					const isPasswordCorrect = credentials.password === user.password;
-
+					console.log("password check");
 					if (isPasswordCorrect) {
 						return user;
 					} else {
@@ -44,6 +45,7 @@ export const authOptions: NextAuthOptions = {
 	callbacks: {
 		async jwt({ token, user }) {
 			if (user) {
+				console.log("auth jwt");
 				token._id = user._id?.toString();
 				token.userid = user.userid as string;
 				token.role = user.role as "user" | "admin";
@@ -52,6 +54,7 @@ export const authOptions: NextAuthOptions = {
 		},
 		async session({ session, token }) {
 			if (token) {
+				console.log("auth session");
 				session.user._id = token._id as string;
 				session.user.userid = token.userid;
 				session.user.role = token.role;
