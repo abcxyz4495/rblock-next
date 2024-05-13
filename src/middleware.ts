@@ -11,7 +11,7 @@ export default withAuth(
 				new URL("/not-found?message=You Are Not Authorized!", req.url)
 			);
 		else if (
-			req.nextUrl.pathname.startsWith("/user") &&
+			req.nextUrl.pathname.startsWith("/courses") &&
 			req.nextauth.token?.role !== "user"
 		)
 			return NextResponse.rewrite(

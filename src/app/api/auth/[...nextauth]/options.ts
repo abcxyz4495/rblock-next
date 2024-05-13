@@ -15,6 +15,8 @@ export const authOptions: NextAuthOptions = {
 				password: { label: "password", type: "password" },
 			},
 			async authorize(credentials: any): Promise<any> {
+				console.log("Starting");
+
 				await dbConnect();
 
 				try {
@@ -29,7 +31,6 @@ export const authOptions: NextAuthOptions = {
 					const isPasswordCorrect = credentials.password === user.password;
 
 					if (isPasswordCorrect) {
-
 						return user;
 					} else {
 						throw new Error("Incorrect password");
