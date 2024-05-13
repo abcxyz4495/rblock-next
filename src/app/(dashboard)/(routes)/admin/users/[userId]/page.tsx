@@ -29,14 +29,14 @@ import CourseModel from "@/model/Course.model";
 // 	courseTitle: string;
 // }
 
-type DUser = {
-	userid: string;
-	password: string;
-	role: "admin" | "user";
-	course: string;
-	courseId: string;
-	courseTitle: string;
-};
+// type DUser = {
+// 	userid: string;
+// 	password: string;
+// 	role: "admin" | "user";
+// 	course: string;
+// 	courseId: string;
+// 	courseTitle: string;
+// };
 
 export default async function Page({ params }: { params: { userId: string } }) {
 	const session = await getServerSession(authOptions);
@@ -45,11 +45,11 @@ export default async function Page({ params }: { params: { userId: string } }) {
 	await dbConnect();
 	const user = await UserModel.findById(params.userId)
 		.select("+password")
-		.populate("course");
+		.populate("course") as any;
 	if (!user) return redirect("/");
 	// console.log('User',user);
 
-	const userData: DUser = {
+	const userData: any = {
 		userid: user?.userid,
 		password: user?.password,
 		role: user?.role as "admin" | "user",
@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { userId: string } }) {
 	];
 
 	// console.log('Course Data', coursesData, 'User Data',  userData);
-	console.log("initialData", userData);
+	// console.log("initialData", userData);
 
 	return (
 		<>
