@@ -5,6 +5,15 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User.model";
 import { getErrorMessage } from "@/helper/errorHelper";
 
+// type credentialsType = {
+// 	userid: string;
+// 	password: string;
+// 	redirect: string;
+// 	csrfToken: string;
+// 	callbackUrl: string;
+// 	json: boolean;
+// };
+
 export const authOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
@@ -15,16 +24,17 @@ export const authOptions: NextAuthOptions = {
 				password: { label: "password", type: "password" },
 			},
 			async authorize(credentials: any): Promise<any> {
+				await dbConnect();
 				console.log("Starting", credentials);
 
-				await dbConnect();
-
 				try {
-					console.log("Getting");
+					console.log("Getting", credentials);
 					const user = await UserModel.findOne({
 						userid: credentials.userid,
 					}).select("+password");
+
 					console.log("user");
+
 					if (!user) {
 						throw new Error("User not found");
 					}

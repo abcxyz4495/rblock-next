@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
-import ChapterModel, { Chapter } from "@/model/Chapter.model";
-import CourseModel from "@/model/Course.model";
+import { ChapterModel, Chapter } from "@/model/User.model";
+import { CourseModel } from "@/model/User.model";
 import { ApiResponse } from "@/types/ApiResponse";
 import mongoose, { Mongoose } from "mongoose";
 import { getServerSession } from "next-auth";
@@ -84,7 +84,7 @@ export async function DELETE(
 
 		const validatingCourse = await CourseModel.findById(
 			params.courseId
-		).populate("chapters");
+		).populate("chapters") as any;
 
 		if (validatingCourse) {
 			if (

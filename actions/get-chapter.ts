@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
-import ChapterModel from "@/model/Chapter.model";
-import CourseModel from "@/model/Course.model";
+import { ChapterModel } from "@/model/User.model";
+import { CourseModel } from "@/model/User.model";
 
 interface GetChapterProps {
 	userId: string;
@@ -19,7 +19,7 @@ export const getChapter = async ({
 			_id: courseId,
 			isPublished: true,
 		}).populate("chapters");
-		return 
+		return;
 	} catch (error: unknown) {
 		return {
 			chapter: null,

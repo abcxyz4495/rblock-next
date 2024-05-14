@@ -4,7 +4,7 @@ import { uploadFileInStorage } from "@/firebase";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { ApiResponse } from "@/types/ApiResponse";
 import dbConnect from "@/lib/dbConnect";
-import CourseModel from "@/model/Course.model";
+import { CourseModel } from "@/model/User.model";
 import { getErrorMessage } from "@/helper/errorHelper";
 
 export async function PATCH(

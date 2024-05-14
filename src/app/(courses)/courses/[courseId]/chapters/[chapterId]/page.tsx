@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { Separator } from "@/components/ui/separator";
-import ChapterModel from "@/model/Chapter.model";
-import CourseModel from "@/model/Course.model";
+import { ChapterModel } from "@/model/User.model";
+import { CourseModel } from "@/model/User.model";
 import UserModel from "@/model/User.model";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

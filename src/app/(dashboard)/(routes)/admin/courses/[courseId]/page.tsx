@@ -4,17 +4,16 @@ import { redirect } from "next/navigation";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
-import CourseModel, { Course } from "@/model/Course.model";
+import { CourseModel, Course, Chapter } from "@/model/User.model";
 import { getErrorMessage } from "@/helper/errorHelper";
 import { IconBadge } from "@/components/icon-badge";
 import { TitleForm } from "./_components/title-form";
 import { DescriptionForm } from "./_components/description-form";
 import { ImageForm } from "./_components/image-form";
 import { ChapterForm } from "./_components/chapter-form";
-import { Chapter } from "@/model/Chapter.model";
 import Banner from "@/components/banner";
 import Actions from "./_components/actions";
-import ChapterModel from "@/model/Chapter.model";
+import { ChapterModel } from "@/model/User.model";
 import mongoose from "mongoose";
 
 interface CourseSlugProps {

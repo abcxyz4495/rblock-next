@@ -2,9 +2,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import { ApiResponse } from "@/types/ApiResponse";
 import dbConnect from "@/lib/dbConnect";
-import CourseModel from "@/model/Course.model";
+import { Chapter, CourseModel } from "@/model/User.model";
 import { getErrorMessage } from "@/helper/errorHelper";
-import ChapterModel from "@/model/Chapter.model";
+import { ChapterModel } from "@/model/User.model";
 import { courseMap } from "@/lib/course-map";
 
 export async function PATCH(
@@ -69,7 +69,7 @@ export async function DELETE(
 		await dbConnect();
 
 		const courseId = params.courseId;
-		const course = await CourseModel.findById(courseId);
+		const course = await CourseModel.findById(courseId) as any;
 		if (!course) {
 			return ApiResponse({
 				success: false,
@@ -82,7 +82,7 @@ export async function DELETE(
 
 		await Promise.all([
 			CourseModel.findByIdAndDelete(courseId),
-			...course.chapters.map((chapterId) =>
+			...course.chapters.map((chapterId: Chapter) =>
 				ChapterModel.findByIdAndDelete(chapterId)
 			),
 		]);

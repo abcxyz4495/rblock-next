@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import CourseModel from "@/model/Course.model";
+import { CourseModel } from "@/model/User.model";
 import UserModel from "@/model/User.model";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

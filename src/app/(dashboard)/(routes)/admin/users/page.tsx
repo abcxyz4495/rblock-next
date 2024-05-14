@@ -6,7 +6,7 @@ import Link from "next/link";
 import { columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
 import { redirect } from "next/navigation";
-import CourseModel from "@/model/Course.model";
+import { CourseModel } from "@/model/User.model";
 import dbConnect from "@/lib/dbConnect";
 import UserModel, { User } from "@/model/User.model";
 

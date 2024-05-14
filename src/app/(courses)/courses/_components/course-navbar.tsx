@@ -1,5 +1,5 @@
 import { NavbarRoutes } from "@/components/navbar-routes";
-import CourseModel from "@/model/Course.model";
+import { CourseModel } from "@/model/User.model";
 import { Chapter, Course } from "@/model/User.model";
 import { CourseMobileSidebar } from "./course-mobile-sidebar";
 

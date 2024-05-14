@@ -6,7 +6,7 @@ import Link from "next/link";
 import { columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
 import { redirect } from "next/navigation";
-import CourseModel from "@/model/Course.model";
+import { CourseModel } from "@/model/User.model";
 import dbConnect from "@/lib/dbConnect";
 
 async function Page() {
@@ -18,7 +18,7 @@ async function Page() {
 	dbConnect();
 	const course = await CourseModel.find({});
 
-	const dupCourse = course.map((crs) => {
+	const dupCourse = course.map((crs: any) => {
 		return {
 			id: crs._id.toString(),
 			title: crs.title,

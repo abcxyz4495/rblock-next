@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Chapter } from "@/model/Chapter.model";
+import { Chapter } from "@/model/User.model";
 import { Grip, Pencil } from "lucide-react";
 import React from "react";
 

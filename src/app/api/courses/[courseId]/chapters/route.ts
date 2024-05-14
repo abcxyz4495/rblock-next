@@ -1,8 +1,8 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { getErrorMessage } from "@/helper/errorHelper";
 import dbConnect from "@/lib/dbConnect";
-import ChapterModel from "@/model/Chapter.model";
-import CourseModel from "@/model/Course.model";
+import { ChapterModel } from "@/model/User.model";
+import { CourseModel } from "@/model/User.model";
 import { ApiResponse } from "@/types/ApiResponse";
 import { getServerSession } from "next-auth";
 

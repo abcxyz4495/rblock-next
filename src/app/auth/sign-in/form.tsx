@@ -15,11 +15,13 @@ import { useToast } from "@/components/ui/use-toast";
 
 interface Props {
 	callbackUrl?: string;
+	username: string
 }
 
 type LoginSchemaType = z.infer<typeof LoginSchema>;
 
-export default function Form({ callbackUrl }: Props) {
+export default function Form({ callbackUrl, username }: Props) {
+	console.log('Username', username);
 	const { toast } = useToast();
 	const router = useRouter();
 	const [isDisabled, setIsDisabled] = useState(false);

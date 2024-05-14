@@ -22,7 +22,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import dbConnect from "@/lib/dbConnect";
 import UserModel, { Chapter, User as IUser } from "@/model/User.model";
-import CourseModel from "@/model/Course.model";
+import { CourseModel } from "@/model/User.model";
 
 // interface CUSer extends IUser {
 // 	courseId: string;

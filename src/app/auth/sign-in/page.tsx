@@ -6,6 +6,8 @@ import Form from "./form";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { redirect, useRouter } from "next/navigation";
+import dbConnect from "@/lib/dbConnect";
+import UserModel from "@/model/User.model";
 
 interface Props {
 	searchParams: {
@@ -16,6 +18,10 @@ interface Props {
 export default async function Page({ searchParams }: Props) {
 	const session = await getServerSession(authOptions);
 	console.log("Sign-in Page Session", session);
+	dbConnect()
+	const users = await UserModel.findOne({});
+	const username = users?.userid;
+
 	return session?.user ? (
 		redirect("/")
 	) : (
@@ -33,7 +39,7 @@ export default async function Page({ searchParams }: Props) {
 					<h1 className="text-white font-semibold text-xl lg:text-2xl text-center mb-5">
 						User Login
 					</h1>
-					<Form callbackUrl={searchParams.callbackUrl} />
+					<Form callbackUrl={searchParams.callbackUrl} username={username} />
 				</div>
 			</div>
 		</div>

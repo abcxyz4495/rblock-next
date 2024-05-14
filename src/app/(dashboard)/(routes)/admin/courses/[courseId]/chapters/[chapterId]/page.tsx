@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { IconBadge } from "@/components/icon-badge";
 import dbConnect from "@/lib/dbConnect";
-import ChapterModel from "@/model/Chapter.model";
+import { ChapterModel } from "@/model/User.model";
 import { ArrowLeft, FileText, LayoutDashboard, VideoIcon } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";

@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { Button } from "@/components/ui/button";
 import dbConnect from "@/lib/dbConnect";
-import CourseModel from "@/model/Course.model";
+import { CourseModel } from "@/model/User.model";
 import UserModel, { Course, User } from "@/model/User.model";
 import { getServerSession } from "next-auth";
 import Link from "next/link";

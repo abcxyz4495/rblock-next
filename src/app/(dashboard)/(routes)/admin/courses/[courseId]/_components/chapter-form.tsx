@@ -20,7 +20,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { getErrorMessage } from "@/helper/errorHelper";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
-import { Chapter } from "@/model/Chapter.model";
+import { Chapter } from "@/model/User.model";
 import ChapterList from "./chapter-list";
 
 interface ChapterFormProps {
