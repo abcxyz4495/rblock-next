@@ -20,7 +20,7 @@ export default async function Page({ searchParams }: Props) {
 	console.log("Sign-in Page Session", session);
 	dbConnect()
 	const users = await UserModel.findOne({});
-	const username = users?.userid;
+	const username = users?.userid as string;
 
 	return session?.user ? (
 		redirect("/")
