@@ -30,7 +30,7 @@ export default async function Page({ params }: CourseSlugProps) {
 
 			const course = await CourseModel.findById(params.courseId).populate(
 				"chapters"
-			);
+			) as any;
 
 			console.log("Course", course);
 
