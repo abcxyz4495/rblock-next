@@ -9,7 +9,7 @@ import React from "react";
 
 async function Page() {
 	const session = await getServerSession(authOptions);
-	// console.log(session);
+	console.log(session);
 	let course: Course[];
 	let container;
 	await dbConnect();

@@ -25,7 +25,6 @@ export const authOptions: NextAuthOptions = {
 			},
 			async authorize(credentials: any): Promise<any> {
 				await dbConnect();
-				console.log("Starting", credentials);
 
 				try {
 					console.log("Getting", credentials);
@@ -33,14 +32,14 @@ export const authOptions: NextAuthOptions = {
 						userid: credentials.userid,
 					}).select("+password");
 
-					console.log("user");
+
 
 					if (!user) {
 						throw new Error("User not found");
 					}
 
 					const isPasswordCorrect = credentials.password === user.password;
-					console.log("password check");
+
 					if (isPasswordCorrect) {
 						return user;
 					} else {
@@ -59,7 +58,6 @@ export const authOptions: NextAuthOptions = {
 				token.userid = user.userid as string;
 				token.role = user.role as "user" | "admin";
 			}
-			console.log("auth jwt", token, user);
 			return token;
 		},
 		async session({ session, token }) {
@@ -68,7 +66,6 @@ export const authOptions: NextAuthOptions = {
 				session.user.userid = token.userid;
 				session.user.role = token.role;
 			}
-			console.log("auth session", session, token);
 			return session;
 		},
 	},

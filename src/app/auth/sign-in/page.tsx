@@ -17,11 +17,7 @@ interface Props {
 
 export default async function Page({ searchParams }: Props) {
 	const session = await getServerSession(authOptions);
-	const anSession = await getServerSession();
-	console.log("Sign-in Page Session", session, anSession);
-	dbConnect()
-	const users = await UserModel.findOne({});
-	const username = users?.userid as string;
+	console.log("Sign-in Page Session", session);
 
 	return session?.user ? (
 		redirect("/")
@@ -40,7 +36,7 @@ export default async function Page({ searchParams }: Props) {
 					<h1 className="text-white font-semibold text-xl lg:text-2xl text-center mb-5">
 						User Login
 					</h1>
-					<Form callbackUrl={searchParams.callbackUrl} username={username} />
+					<Form callbackUrl={searchParams.callbackUrl} />
 				</div>
 			</div>
 		</div>
