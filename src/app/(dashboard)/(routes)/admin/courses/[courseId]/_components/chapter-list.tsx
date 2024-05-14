@@ -40,7 +40,7 @@ const ChapterList = ({
 							{chapter.isPublished ? "Published" : "Draft"}
 						</Badge>
 						<Pencil
-							onClick={() => onEdit(chapter._id)}
+							onClick={() => onEdit(chapter._id.toString())}
 							className="w-4 h-4 cursor-pointer hover:opacity-75 transition"
 						/>
 					</div>
