@@ -10,13 +10,13 @@ export default withAuth(
 			return NextResponse.rewrite(
 				new URL("/not-found?message=You Are Not Authorized!", req.url)
 			);
-		else if (
-			req.nextUrl.pathname.startsWith("/courses") &&
-			req.nextauth.token?.role !== "user"
-		)
-			return NextResponse.rewrite(
-				new URL("/not-found?message=You Are Not Authorized!", req.url)
-			);
+		// else if (
+		// 	req.nextUrl.pathname.startsWith("/user") &&
+		// 	req.nextauth.token?.role !== "user"
+		// )
+		// 	return NextResponse.rewrite(
+		// 		new URL("/not-found?message=You Are Not Authorized!", req.url)
+		// 	);
 		else if (!req.nextauth.token) {
 			return NextResponse.rewrite(new URL("/auth/sign-in!", req.url));
 		}

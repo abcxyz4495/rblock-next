@@ -24,9 +24,7 @@ const layout = async ({
 			_id: course._id.toString(),
 			title: course?.title,
 			description: course?.description,
-			chapters: course.chapters.filter(
-				(chp: Chapter) => chp.isPublished === true
-			),
+			chapters: course.chapters,
 			isPublished: course.isPublished,
 			createdAt: course.createdAt,
 		};

@@ -30,7 +30,7 @@ export interface Course extends Document {
 	_id: mongoose.ObjectId | string;
 	title: string;
 	description: string;
-	chapters: Chapter[] | mongoose.ObjectId;
+	chapters: Chapter[] | mongoose.ObjectId[];
 	imageURL: { public_url: string; id: string };
 	createdAt: Date;
 	isPublished: boolean;

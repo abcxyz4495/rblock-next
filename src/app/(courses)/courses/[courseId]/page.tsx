@@ -1,4 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import dbConnect from "@/lib/dbConnect";
 import { CourseModel } from "@/model/User.model";
 import UserModel from "@/model/User.model";
 import { getServerSession } from "next-auth";
@@ -7,7 +8,8 @@ import React from "react";
 
 const Page = async ({ params }: { params: { courseId: string } }) => {
 	const session = await getServerSession(authOptions);
-
+	
+	await dbConnect();
 	let course;
 	if (session?.user.role === "admin") {
 		course = await CourseModel.findById(params.courseId).populate("chapters");

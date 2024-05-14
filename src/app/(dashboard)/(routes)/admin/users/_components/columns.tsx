@@ -93,11 +93,12 @@ export const columns: ColumnDef<User>[] = [
 			const courseTitle = courseMap.get(courseId);
 			return (
 				<div className="text-start">
-					{role === "admin"
+					{/* {role === "admin"
 						? "-"
 						: role === "user" && courseTitle
 						? courseTitle
-						: ""}
+						: ""} */}
+					{courseId}
 				</div>
 			);
 		},
