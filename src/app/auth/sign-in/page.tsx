@@ -20,7 +20,7 @@ export default async function Page({ searchParams }: Props) {
 	console.log("Sign-in Page Session", session);
 
 	return session?.user._id ? (
-		redirect("/admin/dashboard")
+		redirect("/")
 	) : (
 		<div className="relative w-screen h-screen p-0 m-0">
 			<Image
