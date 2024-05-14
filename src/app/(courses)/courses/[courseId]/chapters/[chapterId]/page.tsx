@@ -33,7 +33,7 @@ const Page = async ({
 		}
 	} else return redirect("/");
 
-	console.log(chapter);
+	// console.log(chapter);
 
 	return (
 		<div className="flex flex-col max-w-4xl mx-auto pb-20">

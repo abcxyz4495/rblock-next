@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export default withAuth(
 	function middleware(req) {
+		console.log('[MIDDLEWARE_TOKEN]', req.nextauth.token?._id);
 		if (
 			req.nextUrl.pathname.startsWith("/admin") &&
 			req.nextauth.token?.role !== "admin"
@@ -18,7 +19,7 @@ export default withAuth(
 		// 		new URL("/not-found?message=You Are Not Authorized!", req.url)
 		// 	);
 		else if (!req.nextauth.token) {
-			return NextResponse.rewrite(new URL("/auth/sign-in!", req.url));
+			return NextResponse.rewrite(new URL("/auth/sign-in", req.url));
 		}
 	},
 	{

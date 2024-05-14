@@ -8,7 +8,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { redirect, useRouter } from "next/navigation";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User.model";
-import Authredirect from "../_components/Authredirect";
+import Authredirect from "../../../components/Authredirect";
 
 interface Props {
 	searchParams: {
@@ -21,7 +21,8 @@ export default async function Page({ searchParams }: Props) {
 	console.log("Sign-in Page Session", session);
 
 	return session?.user._id ? (
-		<Authredirect userToken={session.user._id} />
+		// <Authredirect userToken={session.user._id} />
+		redirect("/")
 	) : (
 		<div className="relative w-screen h-screen p-0 m-0">
 			<Image
