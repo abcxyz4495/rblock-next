@@ -19,8 +19,8 @@ export default async function Page({ searchParams }: Props) {
 	const session = await getServerSession(authOptions);
 	console.log("Sign-in Page Session", session);
 
-	return session?.user ? (
-		redirect("/")
+	return session?.user._id ? (
+		redirect("/admin/dashboard")
 	) : (
 		<div className="relative w-screen h-screen p-0 m-0">
 			<Image
