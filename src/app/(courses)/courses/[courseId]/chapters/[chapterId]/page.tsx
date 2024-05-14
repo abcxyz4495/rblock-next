@@ -21,7 +21,7 @@ const Page = async ({
 	} else if (session?.user.role === "user") {
 		const user = (await UserModel.findById(session?.user?._id)) as any;
 		if (user?.course.toString() == params.courseId) {
-			const course = await CourseModel.findById(params.courseId);
+			const course = await CourseModel.findById(params.courseId) as any;
 			if (
 				course?.chapters.filter(
 					(chp: any) => chp?.toString() === params.chapterId
