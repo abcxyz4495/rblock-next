@@ -17,7 +17,8 @@ interface Props {
 
 export default async function Page({ searchParams }: Props) {
 	const session = await getServerSession(authOptions);
-	console.log("Sign-in Page Session", session);
+	const anSession = await getServerSession();
+	console.log("Sign-in Page Session", session, anSession);
 	dbConnect()
 	const users = await UserModel.findOne({});
 	const username = users?.userid as string;
